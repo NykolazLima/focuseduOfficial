@@ -1,5 +1,10 @@
 package br.com.focusedu.focusedu.view;
 
-public class TelaMain {
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
+public class TelaMain {
+	public BorderPane montarTela() {
+		
+	}
 }
