@@ -1,0 +1,173 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f5f6fa;
+}
+
+.cabecalho {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #e3e6ef transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.logo-focus {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3C3489;
+}
+
+.logo-edu {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0C447C;
+}
+
+.usuario {
+    -fx-text-fill: #6b7280;
+    -fx-font-size: 12px;
+}
+
+.menu-lateral {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent #e3e6ef transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.item-menu {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+    -fx-padding: 10 14 10 14;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #374151;
+    -fx-font-weight: bold;
+}
+
+.item-menu:selected {
+    -fx-background-color: #EEEDFE;
+    -fx-text-fill: #3C3489;
+}
+
+.titulo-secao {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+.button {
+    -fx-background-radius: 8;
+    -fx-padding: 8 14 8 14;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-primario {
+    -fx-background-color: #3C3489;
+    -fx-text-fill: white;
+}
+
+.btn-primario:hover {
+    -fx-background-color: #4a41a3;
+}
+
+.botao-acao {
+    -fx-background-color: #eef1f6;
+    -fx-text-fill: #374151;
+    -fx-padding: 4 10 4 10;
+    -fx-font-size: 12px;
+}
+
+.botao-perigo {
+    -fx-background-color: #fee2e2;
+    -fx-text-fill: #b91c1c;
+}
+
+.botao-perigo:hover {
+    -fx-background-color: #fecaca;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #e3e6ef;
+    -fx-border-radius: 10;
+    -fx-padding: 6;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f8f9fc;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 38;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #6b7280;
+    -fx-font-size: 12px;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #f0f1f5 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #EEEDFE;
+}
+
+.prazo-vencido {
+    -fx-text-fill: #b91c1c;
+    -fx-font-weight: bold;
+}
+
+.cards-scroll {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 4;
+}
+
+.cards-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.cards-container {
+    -fx-spacing: 12;
+    -fx-padding: 4 8 12 8;
+}
+
+.card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12;
+    -fx-border-color: #e3e6ef;
+    -fx-border-radius: 12;
+    -fx-padding: 14 16 14 16;
+}
+
+.card-titulo {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+.card-descricao {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7280;
+}
+
+.card-prazo {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7280;
+}
+
+.card-status {
+    -fx-background-color: #EEEDFE;
+    -fx-text-fill: #3C3489;
+    -fx-background-radius: 8;
+    -fx-padding: 2 10 2 10;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
