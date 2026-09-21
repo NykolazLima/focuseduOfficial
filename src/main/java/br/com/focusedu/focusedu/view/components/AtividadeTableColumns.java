@@ -17,7 +17,7 @@ import javafx.scene.layout.HBox;
 
 public class AtividadeTableColumns {
 	
-	private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+	private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	private final Consumer<Atividade> aoEditar;
 	private final Consumer<Atividade> aoExcluir;
 	

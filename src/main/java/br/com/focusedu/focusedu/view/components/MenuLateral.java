@@ -10,8 +10,11 @@ public class MenuLateral {
 		ToggleGroup grupo = new ToggleGroup();
 		
 		ToggleButton atividades = itemMenu("Atividades", grupo, true, false);
+		ToggleButton materias = itemMenu("Matérias", grupo, false, false);
+		ToggleButton calendario = itemMenu("Calendário", grupo, false, false);
+		ToggleButton perfil = itemMenu("Perfil", grupo, false, false);
 		
-		VBox menu = new VBox(4, atividades);
+		VBox menu = new VBox(4, atividades, materias, calendario, perfil);
 		menu.getStyleClass().add("menu-lateral");
 		menu.setPrefWidth(170);
 		menu.setPadding(new Insets(16, 10, 16, 10));
