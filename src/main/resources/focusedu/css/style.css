@@ -27,6 +27,10 @@
     -fx-font-size: 12px;
 }
 
+.barra-acoes{
+	-fx-padding: 10 14 0 14;
+}
+
 .menu-lateral {
     -fx-background-color: #ffffff;
     -fx-border-color: transparent #e3e6ef transparent transparent;

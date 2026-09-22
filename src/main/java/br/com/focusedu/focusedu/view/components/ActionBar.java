@@ -30,6 +30,7 @@ public class ActionBar {
 		HBox.setHgrow(espaco, Priority.ALWAYS);
 		HBox barra = new HBox(10, titulo, espaco, btnConcluir, btnEditar, btnDeletar, btnCriar);
 		barra.setAlignment(Pos.CENTER_LEFT);
+		barra.getStyleClass().add("barra-acoes");
 		return barra;
 	}
 	
