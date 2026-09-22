@@ -9,10 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     @Override
@@ -21,7 +17,7 @@ public class App extends Application {
         cena.getStylesheets().add(
         		getClass().getResource("/focusedu/css/style.css").toExternalForm());
         
-        palco.setTitle("FocusEdu - Atividades");
+        palco.setTitle("FocusEdu");
         palco.setScene(cena);
         palco.setMinHeight(560);
         palco.setMinWidth(900);

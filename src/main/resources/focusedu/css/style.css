@@ -119,6 +119,11 @@
     -fx-background-color: #EEEDFE;
 }
 
+.table-view .table-row-cell:selected .table-cell,
+.table-view:focused .table-row-cell:selected .table-cell {
+    -fx-text-fill: #3C3489;
+}
+
 .prazo-vencido {
     -fx-text-fill: #b91c1c;
     -fx-font-weight: bold;
@@ -147,6 +152,17 @@
     -fx-padding: 14 16 14 16;
 }
 
+.card:hover {
+    -fx-background-color: #fbfbfe;
+    -fx-cursor: hand;
+}
+
+.card-selecionada {
+    -fx-background-color: #EEEDFE;
+    -fx-border-color: #3C3489;
+    -fx-border-width: 2;
+}
+
 .card-titulo {
     -fx-font-size: 15px;
     -fx-font-weight: bold;
@@ -170,4 +186,9 @@
     -fx-padding: 2 10 2 10;
     -fx-font-size: 11px;
     -fx-font-weight: bold;
+}
+
+.mensagem-erro {
+    -fx-text-fill: #b91c1c;
+    -fx-font-size: 12px;
 }

@@ -28,6 +28,15 @@ public class Atividade {
     	concluida.addListener((obs, antigo, novo)->{
     		if(novo && getStatus() != Status.CONCLUIDA) {
     			setStatus(Status.CONCLUIDA);
+    		} else if(!novo && getStatus() == Status.CONCLUIDA) {
+    			setStatus(Status.A_FAZER);
+    		}
+    	});
+    	
+    	status.addListener((obs, antigo, novo)->{
+    		boolean deveEstarMarcada = novo == Status.CONCLUIDA;
+    		if(isConcluida() != deveEstarMarcada) {
+    			setConcluida(deveEstarMarcada);
     		}
     	});
     	

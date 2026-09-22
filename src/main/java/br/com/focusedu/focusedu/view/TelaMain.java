@@ -12,6 +12,8 @@ import br.com.focusedu.focusedu.view.components.Header;
 import br.com.focusedu.focusedu.view.components.MenuLateral;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
@@ -24,10 +26,10 @@ public class TelaMain {
 		AtividadeCards cards = new AtividadeCards(atividades);
 
 		ActionBar actionBar = new ActionBar(
-				() -> atividades.stream().filter(Atividade::isConcluida).forEach(a -> a.setConcluida(false)),
-				() -> {},
-				() -> {},
-				() -> atividades.add(novaAtividade()));
+				() -> alternarConclusao(cards),
+				() -> editar(atividades, cards),
+				() -> excluir(atividades, cards),
+				() -> criar(atividades, cards));
 
 		ScrollPane rolagem = new ScrollPane(cards.montar());
 		rolagem.setFitToWidth(true);
@@ -45,13 +47,65 @@ public class TelaMain {
 		return raiz;
 	}
 
-	private Atividade novaAtividade() {
-		return new Atividade("Nova atividade", "", Materia.OUTRA, Prioridade.MEDIA, Status.A_FAZER, LocalDate.now().plusDays(7));
+	private void criar(ObservableList<Atividade> atividades, AtividadeCards cards) {
+		new AtividadeDialog(null).showAndWait().ifPresent(nova -> {
+			atividades.add(nova);
+			cards.selecionar(nova);
+			cards.refresh();
+		});
+	}
+
+	private void editar(ObservableList<Atividade> atividades, AtividadeCards cards) {
+		Atividade selecionada = cards.getSelecionada();
+		if (selecionada == null) {
+			avisar("Selecione uma atividade para editar.");
+			return;
+		}
+		new AtividadeDialog(selecionada).showAndWait().ifPresent(dados -> {
+			selecionada.copiarDe(dados);
+			cards.refresh();
+		});
+	}
+
+	private void excluir(ObservableList<Atividade> atividades, AtividadeCards cards) {
+		Atividade selecionada = cards.getSelecionada();
+		if (selecionada == null) {
+			avisar("Selecione uma atividade para excluir.");
+			return;
+		}
+		Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
+		confirmacao.setTitle("Excluir atividade");
+		confirmacao.setHeaderText("Excluir \"" + selecionada.getTitulo() + "\"?");
+		confirmacao.setContentText("Essa ação não pode ser desfeita.");
+		confirmacao.showAndWait().ifPresent(resposta -> {
+			if (resposta == ButtonType.OK) {
+				atividades.remove(selecionada);
+				cards.selecionar(null);
+			}
+		});
+	}
+
+	private void alternarConclusao(AtividadeCards cards) {
+		Atividade selecionada = cards.getSelecionada();
+		if (selecionada == null) {
+			avisar("Selecione uma atividade primeiro.");
+			return;
+		}
+		selecionada.setConcluida(!selecionada.isConcluida());
+		cards.refresh();
+	}
+
+	private void avisar(String mensagem) {
+		Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+		alerta.setTitle("FocusEdu");
+		alerta.setHeaderText(null);
+		alerta.setContentText(mensagem);
+		alerta.showAndWait();
 	}
 
 	private java.util.List<Atividade> dadosIniciais() {
 		return java.util.List.of(
-				new Atividade("Resumo de frações", "Estudar capítulo 3", Materia.MATEMATICA, Prioridade.ALTA, Status.EM_PROGRESSO, LocalDate.now()),
+				new Atividade("Resumo de frações", "Estudar capítulo 3", Materia.MATEMATICA, Prioridade.ALTA, Status.A_FAZER, LocalDate.now()),
 				new Atividade("Redação tema livre", "Mínimo 20 linhas", Materia.PORTUGUES, Prioridade.MEDIA, Status.A_FAZER, LocalDate.now().plusDays(2)),
 				new Atividade("Mapa da Revolução", "Mapa mental da Independência", Materia.HISTORIA, Prioridade.MEDIA, Status.CONCLUIDA, LocalDate.now().minusDays(1)));
 	}

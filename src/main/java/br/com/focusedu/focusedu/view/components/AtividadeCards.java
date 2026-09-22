@@ -16,18 +16,34 @@ public class AtividadeCards {
 
 	private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	private final VBox painel = new VBox(12);
+	private final ObservableList<Atividade> atividades;
+	private Atividade selecionada;
 
 	public AtividadeCards(ObservableList<Atividade> atividades) {
+		this.atividades = atividades;
 		painel.getStyleClass().add("cards-container");
-		rebuild(atividades);
-		atividades.addListener((ListChangeListener<Atividade>) mudanca -> rebuild(atividades));
+		rebuild();
+		atividades.addListener((ListChangeListener<Atividade>) mudanca -> rebuild());
 	}
 
 	public VBox montar() {
 		return painel;
 	}
 
-	private void rebuild(ObservableList<Atividade> atividades) {
+	public Atividade getSelecionada() {
+		return selecionada;
+	}
+
+	public void selecionar(Atividade atividade) {
+		selecionada = atividade;
+		rebuild();
+	}
+
+	public void refresh() {
+		rebuild();
+	}
+
+	private void rebuild() {
 		painel.getChildren().clear();
 		for (Atividade atividade : atividades) {
 			painel.getChildren().add(card(atividade));
@@ -64,6 +80,10 @@ public class AtividadeCards {
 
 		VBox card = new VBox(8, topo, titulo, descricao, prazo);
 		card.getStyleClass().add("card");
+		if (atividade == selecionada) {
+			card.getStyleClass().add("card-selecionada");
+		}
+		card.setOnMouseClicked(e -> selecionar(atividade == selecionada ? null : atividade));
 		return card;
 	}
 
